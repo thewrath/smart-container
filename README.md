@@ -135,7 +135,7 @@ You can access of an object property like that :
 ```
 It's also possible to reference of a other service. Just prefix the service name with `@`:
 ```js
-'%@otherService%'
+'@otherService'
 ```
 At the creation of the service, it's possible to call several methods :
 ```js
