@@ -1,7 +1,7 @@
 {
-  "name": "DIcontainer",
+  "name": "smart-container",
   "version": "0.1.0",
-  "description": "DIcontainer is a dependency injection container for NodeJS which can be configured with a configuration file",
+  "description": "smart-container is a dependency injection container for NodeJS which can be configured with a configuration file",
   "author": "Axel SHAÏTA <shaita.axel@gmail.com>",
   "license": "MIT",
   "main": "./lib/ContainerBuilder.js",
@@ -35,10 +35,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arkerone/DIcontainer"
+    "url": "https://github.com/arkerone/smart-container"
   },
   "bugs": {
-    "url": "https://github.com/arkerone/DIcontainer/issues"
+    "url": "https://github.com/arkerone/smart-container/issues"
   },
-  "homepage": "https://github.com/arkerone/DIcontainer#readme"
+  "homepage": "https://github.com/arkerone/smart-container#readme"
 }

@@ -1,10 +1,10 @@
-# DIcontainer
+# smart-container
 
-DIcontainer is a dependency injection container for NodeJS which can be configured with a configuration file.
+smart-container is a dependency injection container for NodeJS which can be configured with a configuration file.
 
 ## Installation
 ```
-$ npm install --save DIcontainer
+$ npm install --save smart-container
 ```
 
 ## Features
@@ -22,7 +22,7 @@ $ npm install --save DIcontainer
 
 #### Get the container builder
 ```js
-const containerBuilder = require('DIcontainer');
+const containerBuilder = require('smart-container');
 ```
 
 #### Create the container
@@ -194,7 +194,7 @@ module.exports = {
 ```
 #### Get the container builder
 ```js
-const containerBuilder = require('DIcontainer');
+const containerBuilder = require('smart-container');
 ```
 #### Build the container
 ```js
