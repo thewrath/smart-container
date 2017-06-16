@@ -1,0 +1,44 @@
+{
+  "name": "DIcontainer",
+  "version": "0.1.0",
+  "description": "DIcontainer is a dependency injection container for NodeJS which can be configured with a configuration file",
+  "author": "Axel SHAÏTA <shaita.axel@gmail.com>",
+  "license": "MIT",
+  "main": "./lib/ContainerBuilder.js",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text --report-dir=docs/istanbul mocha --reporter=mochawesome --reporter-options reportDir=docs/mochawesome --recursive test"
+  },
+  "keywords": [
+    "ioc",
+    "container",
+    "service",
+    "service container",
+    "di",
+    "dependency injection",
+    "dependency inversion",
+    "inversion of control container",
+    "injection"
+  ],
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "eslint": "^3.12.1",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "mocha": "^3.4.2",
+    "mochawesome": "^2.2.1",
+    "nyc": "^11.0.2"
+  },
+  "dependencies": {
+    "clone": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arkerone/DIcontainer"
+  },
+  "bugs": {
+    "url": "https://github.com/arkerone/DIcontainer/issues"
+  },
+  "homepage": "https://github.com/arkerone/DIcontainer#readme"
+}
