@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "./lib/ContainerBuilder.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text --report-dir=docs/istanbul mocha --reporter=mochawesome --reporter-options reportDir=docs/mochawesome --recursive test"
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "keywords": [
     "ioc",
@@ -21,13 +22,13 @@
   ],
   "devDependencies": {
     "chai": "^4.0.2",
+    "codecov": "^2.2.0",
     "eslint": "^3.12.1",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
     "mocha": "^3.4.2",
-    "mochawesome": "^2.2.1",
     "nyc": "^11.0.2"
   },
   "dependencies": {
