@@ -1,0 +1,3 @@
+language:
+sudo: false
+after_success: npm run coverage
