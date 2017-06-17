@@ -1,5 +1,3 @@
 module.exports = {
-  transform(msg) {
-    return msg.toUpperCase();
-  }
+  value: 0
 };
