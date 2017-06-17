@@ -15,7 +15,10 @@ module.exports = {
     Object: {
       path: '../ObjectService.js',
     },
-    literalInjection: {
+    Transformer: {
+      path: '../TransformerService.js',
+    },
+    LiteralInjection: {
       path: '../ClassService.js',
       constructorArgs: 'test',
     },
@@ -28,15 +31,25 @@ module.exports = {
         },
         {
           method: 'setTransformer',
-          args: ['@Object']
+          args: ['@Transformer']
         }
       ]
     },
-    paramError: {
+    NonSingletonClass: {
+      path: '../ClassService.js',
+      constructorArgs: ['%message%'],
+      isSingleton: false
+    },
+    NonSingletonObject: {
+      path: '../ObjectService.js',
+      constructorArgs: ['%message%'],
+      isSingleton: false
+    },
+    ParamError: {
       path: '../ClassService.js',
       constructorArgs: ['%unknown%'],
     },
-    callError: {
+    CallError: {
       path: '../ClassService.js',
       calls: [
         {

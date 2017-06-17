@@ -1,6 +1,6 @@
 {
   "name": "smart-container",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "smart-container is a dependency injection container for NodeJS which can be configured with a configuration file",
   "author": "Axel SHAÏTA <shaita.axel@gmail.com>",
   "license": "MIT",
