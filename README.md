@@ -71,6 +71,7 @@ module.exports = {
     serviceName: {
       path: 'relative_path_to_the_service',
       constructorArgs: ['first_arg', 'second_arg' /*... others args*/],
+      isSingleton: false, /* By default a service is a singleton */
       calls: [
         {
           method: 'method_name',
@@ -104,6 +105,7 @@ You can create an object as property :
 ```
 
 #### The services
+##### The name and path of the service
 The object `services` is used to define a collection of services. For each service, you must specify its name and the path of its file :
 ```js
 {
@@ -114,6 +116,7 @@ The object `services` is used to define a collection of services. For each servi
   }
 }
 ```
+##### constructorArgs
 you can specify the arguments of the service `constructor` :
 ```js
 {
@@ -125,7 +128,7 @@ you can specify the arguments of the service `constructor` :
   }
 }
 ```
-It's possible to reference of a property, just wrap the name of the property with `%` :
+It's possible to reference of a property (defined in the configuration file), just wrap the name of the property with `%` :
 ```js
 {
   services: {
@@ -136,7 +139,7 @@ It's possible to reference of a property, just wrap the name of the property wit
   }
 }
 ```
-You can access of an object property like that :
+If the property is an object, you can access of the object property like that :
 ```js
 '%person.firstName%'
 ```
@@ -144,6 +147,21 @@ It's also possible to reference of a other service. Just prefix the service name
 ```js
 '@otherService'
 ```
+##### isSingleton
+You can specify if the service is a singleton or not (by default a service is a singleton) :
+```js
+{
+  services: {
+    messagePrinter: {
+      path: './MessagePrinter',
+      constructorArgs: ['%message%'],
+      isSingleton: false
+    }
+  }
+}
+```
+In the case of a literal object, if `isSingleton` is set to false, the object Is copied. 
+##### calls
 At the creation of the service, it's possible to call several methods :
 ```js
 {
@@ -233,7 +251,8 @@ Get a service by its `name`
 #### register(name, serviceClass)
 Register a service. The parameters are :
  * `name`: The name of the service,
- * `serviceClass`: the class or the literal object of the service.
+ * `serviceClass`: the class or the literal object of the service,
+ * `isSingleton`: (optional : by default true) true if the service is a singleton, false otherwise.
  
  This function return an `ServiceDefinition` object (see below).
 #### hasService(name)
