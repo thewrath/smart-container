@@ -83,6 +83,7 @@ module.exports = {
 };
 ```
 #### The properties
+#### Define a property
 The object `properties` is used to define a collection of properties. For each property, you must specify its name and its value :
 ```js
 {
@@ -103,7 +104,17 @@ You can create an object as property :
   }
 }
 ```
-
+#### process.env support
+If you use a js configuration file instead of a JSON configuration file, you can use the environment variables:
+```js
+{
+  properties: {
+    host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS
+  }
+}
+```
 #### The services
 ##### The name and path of the service
 The object `services` is used to define a collection of services. For each service, you must specify its name and the path of its file :
