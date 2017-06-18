@@ -83,7 +83,7 @@ module.exports = {
 };
 ```
 #### The properties
-#### Define a property
+##### Define a property
 The object `properties` is used to define a collection of properties. For each property, you must specify its name and its value :
 ```js
 {
@@ -104,7 +104,7 @@ You can create an object as property :
   }
 }
 ```
-#### process.env support
+##### process.env support
 If you use a js configuration file instead of a JSON configuration file, you can use the environment variables:
 ```js
 {
@@ -192,7 +192,7 @@ You can, like the arguments of the `constuctor`, make a reference to a property 
 
 #### Build a container with the configuration file
 
-#### Create a service class
+#####  Create a service class
 MessagePrinter.js
 ```js
 module.exports = class MessagePrinter {
@@ -209,7 +209,7 @@ module.exports = class MessagePrinter {
   }
 };
 ```
-#### Create the configuration file
+#####  Create the configuration file
 Services.js
 ```js
 module.exports = {
@@ -228,11 +228,11 @@ module.exports = {
   }
 };
 ```
-#### Get the container builder
+#####  Get the container builder
 ```js
 const containerBuilder = require('smart-container');
 ```
-#### Build the container
+#####  Build the container
 ```js
 const container = containerBuilder.build(__dirname, './Services.js');
 ```
@@ -259,7 +259,7 @@ Load a configuration file. The parameters are :
 * `configPath`: The relative path of the configuration file.
 #### get(name)
 Get a service by its `name`
-#### register(name, serviceClass)
+#### register(name, serviceClass, isSingleton)
 Register a service. The parameters are :
  * `name`: The name of the service,
  * `serviceClass`: the class or the literal object of the service,
@@ -287,7 +287,7 @@ This object is used to describe a service.
 Add a argument `value` used by the constructor. You can use the symbol `@` to make reference to an other service or wrap the `value` with `%` to make reference to a property.
 #### addArguments(args)
 Add several arguments used by the constructor. The parameter `args` is an array.
-#### addMethodCall(method, args = [])
+#### addMethodCall(method, args)
 Add a method call. The parameters are :
  * `method`:  the name of the method,
  * `args`: (optional) the array of method arguments.
