@@ -259,7 +259,7 @@ Load a configuration file. The parameters are :
 * `configPath`: The relative path of the configuration file.
 #### get(name)
 Get a service by its `name`
-#### register(name, serviceClass)
+#### register(name, serviceClass, isSingleton)
 Register a service. The parameters are :
  * `name`: The name of the service,
  * `serviceClass`: the class or the literal object of the service,
@@ -287,7 +287,7 @@ This object is used to describe a service.
 Add a argument `value` used by the constructor. You can use the symbol `@` to make reference to an other service or wrap the `value` with `%` to make reference to a property.
 #### addArguments(args)
 Add several arguments used by the constructor. The parameter `args` is an array.
-#### addMethodCall(method, args = [])
+#### addMethodCall(method, args)
 Add a method call. The parameters are :
  * `method`:  the name of the method,
  * `args`: (optional) the array of method arguments.
