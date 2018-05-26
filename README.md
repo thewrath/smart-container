@@ -172,6 +172,20 @@ You can specify if the service is a singleton or not (by default a service is a 
 }
 ```
 In the case of a literal object, if `isSingleton` is set to false, the object Is copied. 
+##### isPublic
+You can specify if the service is public or not (by default a service is public) :
+```js
+{
+  services: {
+    messagePrinter: {
+      path: './MessagePrinter',
+      constructorArgs: ['%message%'],
+      isPublic: true
+    }
+  }
+}
+```
+A public service can be accessible by the "get" function
 ##### calls
 At the creation of the service, it's possible to call several methods :
 ```js
@@ -263,7 +277,8 @@ Get a service by its `name`
 Register a service. The parameters are :
  * `name`: The name of the service,
  * `serviceClass`: the class or the literal object of the service,
- * `isSingleton`: (optional : by default true) true if the service is a singleton, false otherwise.
+ * `isSingleton`: (optional : by default true) true if the service is a singleton, false otherwise,
+ * `isPublic`: (optional : by default true) true if the service is public, false otherwise
  
  This function return an `ServiceDefinition` object (see below).
 #### hasService(name)

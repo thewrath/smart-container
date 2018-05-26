@@ -117,6 +117,10 @@ describe('/lib/Container.js', () => {
       obj1.value = 2;
       chai.expect(obj1).to.not.deep.equal(obj2);
     });
+    it('Throw error when get a private service', () => {
+      this.container.register('Private', class {}, true, false);
+      chai.expect(() => this.container.get('Private')).to.throw();
+    });
     it('Throw error when register a service which already exists', () => {
       chai.expect(() => this.container.register('Class', {})).to.throw();
     });
