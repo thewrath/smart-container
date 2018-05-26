@@ -32,6 +32,7 @@ describe('/lib/Container.js', () => {
       chai.expect(this.container.get('MethodCall')).to.be.an.instanceof(ClassService);
       chai.expect(this.container.get('LiteralInjection')).to.be.an.instanceof(ClassService);
       chai.expect(this.container.get('Class')).to.be.an.instanceof(ClassService);
+      chai.expect(this.container.get('ServiceWithPrivate')).to.be.an.instanceof(ClassService);
     });
     it('Check the injection', () => {
       chai.expect(this.container.get('LiteralInjection').msg).to.equal('test');
@@ -47,46 +48,59 @@ describe('/lib/Container.js', () => {
     it('Throw error when get a service with an unknown property', () => {
       chai.expect(() => this.container.get('ParamError')).to.throw();
     });
+    it('Throw error when get a private service', () => {
+      chai.expect(() => this.container.get('PrivateService')).to.throw();
+    });
   });
 
   describe('#register', () => {
     it('register services', () => {
       const container = ContainerBuilder.create();
       container.addProperty('value', 10);
-      container.register('getValue', class {
-        constructor(value) {
-          this.value = value;
-        }
+      container
+        .register(
+          'getValue',
+          class {
+            constructor(value) {
+              this.value = value;
+            }
 
-        getValue() {
-          return this.value;
-        }
-      }).addArgument('%value%');
+            getValue() {
+              return this.value;
+            }
+          }
+        )
+        .addArgument('%value%');
 
       chai.expect(() => container.get('getValue')).to.not.throw();
       chai.expect(container.get('getValue').getValue()).to.equal(10);
 
-      container.register('compute', class {
-        constructor(a, b) {
-          this.a = a;
-          this.b = b;
-          this.result = 0;
-        }
+      container
+        .register(
+          'compute',
+          class {
+            constructor(a, b) {
+              this.a = a;
+              this.b = b;
+              this.result = 0;
+            }
 
-        compute() {
-          this.result = this.a + this.b;
-        }
+            compute() {
+              this.result = this.a + this.b;
+            }
 
-        getResult() {
-          return this.result;
-        }
-      }).addArguments([5, 10]).addMethodCall('compute');
+            getResult() {
+              return this.result;
+            }
+          }
+        )
+        .addArguments([5, 10])
+        .addMethodCall('compute');
       chai.expect(() => container.get('compute')).to.not.throw();
       chai.expect(container.get('compute').getResult()).to.equal(15);
     });
     it('Check the singleton service', () => {
-      this.container.register('Singleton', class {
-      }, true);
+      this.container.register('Singleton', class {}, true);
       chai.expect(this.container.get('Singleton')).to.equal(this.container.get('Singleton'));
       chai.expect(this.container.get('Class')).to.equal(this.container.get('Class'));
       const obj1 = this.container.get('Object');
@@ -95,8 +109,7 @@ describe('/lib/Container.js', () => {
       chai.expect(obj1).to.deep.equal(obj2);
     });
     it('Check the non singleton service', () => {
-      this.container.register('NonSingleton', class {
-      }, false);
+      this.container.register('NonSingleton', class {}, false);
       chai.expect(this.container.get('NonSingleton')).to.not.equal(this.container.get('NonSingleton'));
       chai.expect(this.container.get('NonSingletonClass')).to.not.equal(this.container.get('NonSingletonClass'));
       const obj1 = this.container.get('NonSingletonObject');

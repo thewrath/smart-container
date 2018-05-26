@@ -10,17 +10,21 @@ module.exports = {
   services: {
     Class: {
       path: '../ClassService.js',
-      constructorArgs: ['%message%'],
+      constructorArgs: ['%message%']
     },
     Object: {
-      path: '../ObjectService.js',
+      path: '../ObjectService.js'
+    },
+    PrivateService: {
+      path: '../TransformerService.js',
+      isPublic: false
     },
     Transformer: {
-      path: '../TransformerService.js',
+      path: '../TransformerService.js'
     },
     LiteralInjection: {
       path: '../ClassService.js',
-      constructorArgs: 'test',
+      constructorArgs: 'test'
     },
     MethodCall: {
       path: '../ClassService.js',
@@ -47,13 +51,22 @@ module.exports = {
     },
     ParamError: {
       path: '../ClassService.js',
-      constructorArgs: ['%unknown%'],
+      constructorArgs: ['%unknown%']
     },
     CallError: {
       path: '../ClassService.js',
       calls: [
         {
           name: 'call'
+        }
+      ]
+    },
+    ServiceWithPrivate: {
+      path: '../ClassService.js',
+      calls: [
+        {
+          method: 'setTransformer',
+          args: ['@Transformer']
         }
       ]
     }
